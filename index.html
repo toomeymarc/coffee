@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Coffee Shop</title>
+	<meta name="author" content="Marc Toomey" />
+		<link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+
+		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>	
+
+<body>
+
+<div class='video'>
+	<!--
+	<div id="tv" href="#">
+		<div class='text_tv_button'>Menu</div>
+	</div>-->
+
+	<div id="logo"></div>
+	<div class="arrow bounce"></div>
+	<video loop="loop" preload="auto" autoplay="" muted="muted" id="myVideo">
+		<source src="img/coffee.mp4" type="video/mp4">
+		<source src="img/coffee.ogv" type="video/ogv">
+	</video>
+</div>
+
+<div class='fond_blanc' id="carte"> 
+	<div class='text'>
+		<h1> La Carte </h1>
+	</div>
+	<div class='container1'>
+		<div class="one_box ">
+			<div id="Latte"class="one_hover"></div>
+			<h4>Latte</h4>
+			<img class="portfolio" src="img/latte300.jpg">
+		</div>
+		<div class="one_box ">
+			<div id="cappuccino"class="one_hover"></div>
+			<h4>Cappucino</h4>
+			<img class="portfolio" src="img/heart.jpg">
+		</div>
+		<div class="one_box">
+			<div id="flat White"class="one_hover"></div>
+			<h4>Flat White</h4>
+			<img class="portfolio" src="img/star.jpg">
+		</div>
+	</div>	
+	<div class='container1'>
+		<div class="one_box">
+			<div id="cappuccino"class="one_hover"></div>
+			<h4>Cappuccino</h4>
+			<img class="portfolio" src="img/heart.jpg">
+		</div>
+		<div class="one_box">
+			<div id="Flat White"class="one_hover"></div>
+			<h4>Flat White</h4>
+			<img class="portfolio" src="img/star.jpg">
+		</div>
+		<div class="one_box">
+			<div id="Latte"class="one_hover"></div>
+			<h4>Latte</h4>
+			<img class="portfolio" src="img/latte300.jpg">
+		</div>
+	</div>	
+	<div class='box'>
+		<div class="ud_parallax_box">
+			<h2> Le café qui vous correspond  </h2>
+			<div class="ud_parallax back_view"></div>
+		</div>
+	</div>	
+	<div class='fond_blanc' id="between_boxes"></div>
+	<div class='box'>
+		<div class="ud_parallax_box_2">
+			<h2> Des grains de qualité </h2>
+			<div class="ud_parallax grain_cafe"> </div>
+		</div>
+	</div>	
+	<div class='fond_blanc' id="post_boxes"></div>
+</div>
+<footer class="social-links">
+    <a href="#" class="icon-twitter"></a>
+    <a href="#" class="icon-facebook"></a>
+</footer>
+
+<script>
+(function($) {
+
+	var $AlleParallaxBoxen = $(document).find('.ud_parallax');
+	
+
+	var UD_Parallax= function(){
+		
+		for (i=0; i<$AlleParallaxBoxen.length; i++){
+			
+			var BodyScroll = document.body.scrollTop;
+
+
+			ThisParallaxBox = $AlleParallaxBoxen[i];
+			ParentParallax = $(ThisParallaxBox).parent();
+			Abstand = ParentParallax.offset().top;
+
+			ParallaxScroll = Math.round(((BodyScroll-Abstand)/($(ThisParallaxBox).height()))*(($(ThisParallaxBox).height())-($($(ThisParallaxBox).parent()).height())));
+			ThisParallaxBox.style.webkitTransform = "translate3d(0px," + ParallaxScroll + "px, 0px";
+			ThisParallaxBox.style.msTransform = "translate3d(0px," + ParallaxScroll + "px, 0px";
+			ThisParallaxBox.style.oTransform = "translate3d(0px," + ParallaxScroll + "px, 0px";
+			ThisParallaxBox.style.mozTransform = "translate3d(0px," + ParallaxScroll + "px, 0px";
+			ThisParallaxBox.style.Transform = "translate3d(0px," + ParallaxScroll + "px, 0px";
+
+			console.log(i);
+		};
+	};
+
+	(function loop() {
+		requestAnimationFrame(loop);
+		UD_Parallax();
+	})();
+})(jQuery);
+
+
+</script>
+<!--
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/plugins/ScrollToPlugin.min.js"></script>
+<script type="text/javascript" src="./js/main.js"></script>
+-->
+</head>	
+</body>
+</html>
